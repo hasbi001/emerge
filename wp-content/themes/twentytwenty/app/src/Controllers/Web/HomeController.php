@@ -3,6 +3,10 @@ namespace App\Controllers\Web;
 
 class HomeController {
      public function index( $request, $view ) {
-         return \App::view( 'template-cta.php' );
+     	if ( $request->query( 'cta' ) === '0' ) {
+	        // ... return the view WordPress was trying to load:
+	        return \App::view( $view );
+	    }
+        return \App::view( 'template-cta.php' );
      }
  }
