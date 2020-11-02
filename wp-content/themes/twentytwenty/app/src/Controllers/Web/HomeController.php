@@ -7,6 +7,9 @@ class HomeController {
 	        // ... return the view WordPress was trying to load:
 	        return \App::view( $view );
 	    }
-        return \App::view( 'template-cta.php' );
+	    $skip_url = add_query_arg( 'cta', '0', $request->getUrl() );
+        
+        return \App::view( 'template-cta.php' )
+        ->with( 'skip_url', $skip_url );
      }
  }
